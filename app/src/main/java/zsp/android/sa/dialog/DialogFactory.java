@@ -18,7 +18,7 @@ public class DialogFactory {
         DialogPlus dialog = DialogPlus
                 .newDialog(activity)
                 .setContentHolder(new ViewHolder(R.layout.dialog_login))
-                .setCancelable(false)
+                .setCancelable(true)
                 .setGravity(Gravity.CENTER)
                 .setContentBackgroundResource(android.R.color.white)
                 .create();
@@ -26,6 +26,58 @@ public class DialogFactory {
         final EditText etLogin = (EditText) dialog.findViewById(R.id.etLogin);
         final EditText etPassword = (EditText) dialog.findViewById(R.id.etPassword);
         Button btAuth = (Button) dialog.findViewById(R.id.btAuth);
+
+        return dialog;
+    }
+
+    public static DialogPlus createRegisterDialog(final BaseActivity activity) {
+        DialogPlus dialog = DialogPlus
+                .newDialog(activity)
+                .setContentHolder(new ViewHolder(R.layout.dialog_register))
+                .setCancelable(true)
+                .setGravity(Gravity.CENTER)
+                .setContentBackgroundResource(android.R.color.white)
+                .create();
+
+        final EditText etLogin = (EditText) dialog.findViewById(R.id.etLogin);
+        final EditText etPassword = (EditText) dialog.findViewById(R.id.etPassword);
+        final EditText etRepeatPassword = (EditText) dialog.findViewById(R.id.etRepeatPassword);
+        Button btRegister = (Button) dialog.findViewById(R.id.btRegister);
+
+        return dialog;
+    }
+
+    public static DialogPlus createSubjectDialog(final BaseActivity activity) {
+        DialogPlus dialog = DialogPlus
+                .newDialog(activity)
+                .setContentHolder(new ViewHolder(R.layout.dialog_subject))
+                .setCancelable(true)
+                .setGravity(Gravity.CENTER)
+                .setContentBackgroundResource(android.R.color.white)
+                .create();
+
+        final TextView tvSubject = (TextView) dialog.findViewById(R.id.tvSubject);
+        tvSubject.setText("Предмет:");
+        final TextView tvTime = (TextView) dialog.findViewById(R.id.tvTime);
+        tvTime.setText("Время:");
+        final TextView tvProfessor = (TextView) dialog.findViewById(R.id.tvProfessor);
+        tvProfessor.setText("Преподаватель:");
+        final TextView tvCabinet = (TextView) dialog.findViewById(R.id.tvCabinet);
+        tvCabinet.setText("Кабинет:");
+        final TextView tvInfo = (TextView) dialog.findViewById(R.id.tvInfo);
+        tvInfo.setText("Описание:");
+        final EditText etSubject = (EditText) dialog.findViewById(R.id.etSubject);
+        etSubject.setText("ЧМИ (лекция)");
+        final EditText etTime = (EditText) dialog.findViewById(R.id.etTime);
+        etTime.setText("13:00");
+        final EditText etProfessor = (EditText) dialog.findViewById(R.id.etProfessor);
+        etProfessor.setText("Давидовская М.И.");
+        final EditText etCabinet = (EditText) dialog.findViewById(R.id.etCabinet);
+        etCabinet.setText("508");
+        final EditText etInfo = (EditText) dialog.findViewById(R.id.etInfo);
+        etInfo.setText("");
+        Button btClose = (Button) dialog.findViewById(R.id.btClose);
+        Button btSave = (Button) dialog.findViewById(R.id.btSave);
 
         return dialog;
     }

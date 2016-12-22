@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/search_item"
+        android:icon="@drawable/ic_search"
+        android:title="Поиск"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/update_item"
+        android:icon="@drawable/ic_update"
+        android:title="Обновить"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/edit_item"
+        android:icon="@drawable/ic_edit"
+        android:title="Редактировать"
+        app:showAsAction="never" />
+</menu>
