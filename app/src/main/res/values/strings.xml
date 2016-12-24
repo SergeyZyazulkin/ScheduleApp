@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ScheduleApp</string>
+    <string name="app_name">Расписания</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
     <string name="title_activity_main2">Main2Activity</string>
