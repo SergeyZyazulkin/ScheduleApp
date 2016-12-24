@@ -10,6 +10,7 @@ import reqlib.Logger;
 import reqlib.client.ServerParameters;
 import reqlib.request.config.RequestConfig;
 import reqlib.request.transformer.OutputDataType;
+import zsp.android.sa.data.AppData;
 
 public class UrlBuilder {
 
@@ -25,7 +26,15 @@ public class UrlBuilder {
         String path = requestConfig.getRequestParameters().getPath();
 
         if (path != null && !path.isEmpty()) {
-            uriBuilder.appendPath(path);
+            String[] parts = path.split("/");
+
+            for (String part : parts) {
+                uriBuilder.appendPath(part);
+            }
+
+            if (requestConfig.isAdd()) {
+                uriBuilder.appendPath(AppData.currentSchedule.get_id());
+            }
         }
 
         if (requestConfig.getRequestTransformer().getOutputDataType() == OutputDataType.QUERY) {

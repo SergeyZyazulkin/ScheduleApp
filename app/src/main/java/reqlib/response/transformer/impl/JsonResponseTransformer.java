@@ -20,7 +20,7 @@ public class JsonResponseTransformer<ERR, RES> extends DefaultResponseTransforme
     @SuppressWarnings("unchecked")
     @Override
     public InternalResponse<ERR, RES> transformStringData(String responseData) throws Exception {
-        RES res = (RES) new Gson().fromJson(responseData, resClass);
+        RES res = new Gson().fromJson(responseData, resClass);
         return InternalResponse.success(res);
     }
 }

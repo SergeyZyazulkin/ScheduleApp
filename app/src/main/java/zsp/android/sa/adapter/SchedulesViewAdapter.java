@@ -10,49 +10,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import reqlib.hmi.response.ScheduleJson;
 import zsp.android.sa.R;
+import zsp.android.sa.activity.MainActivity;
+import zsp.android.sa.data.AppData;
+import zsp.android.sa.fragment.SubjectsFragment;
 
 public class SchedulesViewAdapter extends RecyclerView.Adapter<SchedulesViewAdapter.ScheduleViewHolder> {
 
     private Context context;
-    private List<ScheduleView> scheduleViews;
-
-    public class ScheduleView {
-
-        private String course;
-        private String group;
-        private String university;
-
-        public ScheduleView(String course, String group, String university) {
-            this.course = course;
-            this.group = group;
-            this.university = university;
-        }
-
-        public String getCourse() {
-            return course;
-        }
-
-        public void setCourse(String course) {
-            this.course = course;
-        }
-
-        public String getGroup() {
-            return group;
-        }
-
-        public void setGroup(String group) {
-            this.group = group;
-        }
-
-        public String getUniversity() {
-            return university;
-        }
-
-        public void setUniversity(String university) {
-            this.university = university;
-        }
-    }
+    private ScheduleJson[] schedules;
 
     public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
@@ -63,15 +30,24 @@ public class SchedulesViewAdapter extends RecyclerView.Adapter<SchedulesViewAdap
             super(itemView);
             courseGroup = (TextView) itemView.findViewById(R.id.tvCourseGroup);
             university = (TextView) itemView.findViewById(R.id.tvUniversity);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AppData.currentSchedule = schedules[getAdapterPosition()];
+                    AppData.editingSchedule = schedules[getAdapterPosition()].getCopy();
+                    SubjectsFragment fragment = new SubjectsFragment();
+                    fragment.setSchedule(schedules[getAdapterPosition()]);
+                    ((MainActivity) context).replaceFragment(R.id.fragment_container, fragment, true, false);
+                }
+            });
         }
     }
 
-    public SchedulesViewAdapter(Context context) {
+    public SchedulesViewAdapter(Context context, ScheduleJson[] schedules) {
         this.context = context;
-        this.scheduleViews = new ArrayList<>();
-        scheduleViews.add(new ScheduleView("4", "12", "Белорусский государственный университет"));
-        scheduleViews.add(new ScheduleView("3", "10", "БГУИР"));
-        scheduleViews.add(new ScheduleView("5", "1", "БНТУ"));
+        this.schedules = schedules == null ? new ScheduleJson[0] : schedules;
+        AppData.schedules = schedules;
     }
 
     @Override
@@ -84,13 +60,13 @@ public class SchedulesViewAdapter extends RecyclerView.Adapter<SchedulesViewAdap
 
     @Override
     public void onBindViewHolder(final ScheduleViewHolder holder, int position) {
-        ScheduleView view = scheduleViews.get(position % 3);
+        ScheduleJson view = schedules[position];
         holder.courseGroup.setText(view.getCourse() + " курс " + view.getGroup() + " группа");
         holder.university.setText(view.getUniversity());
     }
 
     @Override
     public int getItemCount() {
-        return scheduleViews.size() * 10;
+        return schedules.length;
     }
 }

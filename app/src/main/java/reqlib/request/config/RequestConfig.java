@@ -12,6 +12,7 @@ public class RequestConfig<REQ, ERR, RES> {
     private RequestParameters requestParameters;
     private RequestTransformer<REQ> requestTransformer;
     private ResponseTransformer<ERR, RES> responseTransformer;
+    private boolean add;
 
     public RequestConfig(REQ requestData,
                          RequestParameters requestParameters,
@@ -49,5 +50,13 @@ public class RequestConfig<REQ, ERR, RES> {
 
     public ResponseTransformer<ERR, RES> getResponseTransformer() {
         return responseTransformer;
+    }
+
+    public boolean isAdd() {
+        return add;
+    }
+
+    public void setAdd(boolean add) {
+        this.add = add;
     }
 }

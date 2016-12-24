@@ -15,7 +15,8 @@
             android:id="@+id/etLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Почтовый адрес"/>
+            android:hint="Почтовый адрес"
+            android:inputType="textEmailAddress"/>
 
         <EditText
             android:id="@+id/etPassword"

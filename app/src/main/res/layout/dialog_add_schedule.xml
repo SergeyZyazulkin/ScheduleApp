@@ -17,18 +17,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvSubject"
+                android:id="@+id/tvCountry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Страна:"
                 android:gravity="left"/>
 
             <EditText
-                android:id="@+id/etSubject"
+                android:id="@+id/etCountry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/et_color"
-                android:hint="Имя предмета"
+                android:hint="Страна"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -38,18 +39,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvTime"
+                android:id="@+id/tvUniversity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Университет: "
                 android:gravity="left"/>
 
             <EditText
-                android:id="@+id/etTime"
+                android:id="@+id/etUniversity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/et_color"
-                android:hint="Время (HH:mm)"
+                android:hint="Университет"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -59,18 +61,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvProfessor"
+                android:id="@+id/tvCourse"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Курс: "
                 android:gravity="left"/>
 
             <EditText
-                android:id="@+id/etProfessor"
+                android:id="@+id/etCourse"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/et_color"
-                android:hint="Преподаватель"
+                android:hint="Курс"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -80,39 +83,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvCabinet"
+                android:id="@+id/tvGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Группа:"
                 android:gravity="left"/>
 
             <EditText
-                android:id="@+id/etCabinet"
+                android:id="@+id/etGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/et_color"
-                android:hint="Кабинет"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvInfo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"/>
-
-            <EditText
-                android:id="@+id/etInfo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/et_color"
-                android:hint="Описание"
+                android:hint="Группа"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -145,7 +128,7 @@
                 android:layout_toLeftOf="@id/btClose"
                 android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:text="Сохранить"
+                android:text="Добавить"
                 android:layout_gravity="left"/>
         </RelativeLayout>
     </LinearLayout>

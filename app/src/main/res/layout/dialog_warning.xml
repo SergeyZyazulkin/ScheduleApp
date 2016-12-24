@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Несохраненные изменения"/>
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:text="Присутствуют несохраненные изменения. Сохранить изменения?"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="Отмена"
+                android:layout_alignParentRight="true" />
+
+            <Button
+                android:id="@+id/btDontSave"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="Не сохранять"
+                android:layout_toLeftOf="@id/btCancel"/>
+
+            <Button
+                android:id="@+id/btSave"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="Сохранить"
+                android:paddingRight="15dp"
+                android:layout_toLeftOf="@id/btDontSave"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

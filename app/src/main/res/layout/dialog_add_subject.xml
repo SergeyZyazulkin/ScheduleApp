@@ -145,7 +145,7 @@
                 android:layout_toLeftOf="@id/btClose"
                 android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:text="Сохранить"
+                android:text="Добавить"
                 android:layout_gravity="left"/>
         </RelativeLayout>
     </LinearLayout>

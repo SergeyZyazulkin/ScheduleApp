@@ -1,4 +1,4 @@
-package zsp.android.sa.element;
+package zsp.android.sa.util;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
@@ -7,7 +7,13 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+import zsp.android.sa.data.AppData;
+
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
+
+    public ScrollAwareFABBehavior() {
+        super();
+    }
 
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
         super();
@@ -32,7 +38,9 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
         if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
             child.hide();
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
-            child.show();
+            if (AppData.user != null) {
+                child.show();
+            }
         }
     }
 }

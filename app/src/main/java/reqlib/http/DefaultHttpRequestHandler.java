@@ -71,7 +71,7 @@ public class DefaultHttpRequestHandler implements HttpRequestHandler {
             httpsURLConnection.connect();
             int responseCode = httpsURLConnection.getResponseCode();
 
-            if (responseCode != HttpURLConnection.HTTP_OK) {
+            if (responseCode != HttpURLConnection.HTTP_OK && responseCode != HttpURLConnection.HTTP_CREATED) {
                 throw new ConnectionException("Response code: " + responseCode);
             }
 

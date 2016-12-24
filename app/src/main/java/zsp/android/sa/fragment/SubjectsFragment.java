@@ -15,18 +15,24 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import reqlib.hmi.response.ScheduleJson;
 import zsp.android.sa.R;
 import zsp.android.sa.adapter.SchedulesViewAdapter;
+import zsp.android.sa.data.AppData;
 
-public class SubjectsFragment extends Fragment {
+public class SubjectsFragment extends BaseFragment {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    protected TabLayout tabLayout;
+    protected ViewPager viewPager;
+    protected ViewPagerAdapter adapter;
+    protected ScheduleJson schedule;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        AppData.editing = false;
+        AppData.changes = false;
         View view = inflater.inflate(R.layout.fragment_subjects, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -36,19 +42,24 @@ public class SubjectsFragment extends Fragment {
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new DaySubjectsFragment(), "ПН");
-        adapter.addFragment(new DaySubjectsFragment(), "ВТ");
-        adapter.addFragment(new DaySubjectsFragment(), "СР");
-        adapter.addFragment(new DaySubjectsFragment(), "ЧТ");
-        adapter.addFragment(new DaySubjectsFragment(), "ПТ");
-        adapter.addFragment(new DaySubjectsFragment(), "СБ");
-        adapter.addFragment(new DaySubjectsFragment(), "ВС");
+    protected void setupViewPager(ViewPager viewPager) {
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
+        String[] days = { "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС" };
+
+        for (int i = 1; i <= 7; ++i) {
+            DaySubjectsFragment fragment = new DaySubjectsFragment();
+            fragment.setSubjects(i);
+            adapter.addFragment(fragment, days[i - 1]);
+        }
+
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    public ViewPagerAdapter getAdapter() {
+        return adapter;
+    }
+
+    public class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -76,5 +87,17 @@ public class SubjectsFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+
+        public List<Fragment> getmFragmentList() {
+            return mFragmentList;
+        }
+    }
+
+    public ScheduleJson getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(ScheduleJson schedule) {
+        this.schedule = schedule;
     }
 }

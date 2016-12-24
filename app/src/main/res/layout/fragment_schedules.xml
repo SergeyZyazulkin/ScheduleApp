@@ -27,6 +27,6 @@
             app:fabSize="normal"
             app:layout_anchor="@id/schedule_view"
             app:layout_anchorGravity="bottom|right|end"
-            app:layout_behavior="zsp.android.sa.element.ScrollAwareFABBehavior"/>
+            app:layout_behavior="zsp.android.sa.util.ScrollAwareFABBehavior"/>
     </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>
